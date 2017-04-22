@@ -101,7 +101,7 @@ setup_slim () {
     # install rest of the requirements for slimapp
     apt -y install zip unzip php7.0-zip
     apt-get -y install php7.0-xml
-    composer create-project slim/slim-skeleton /var/www/backend
+    composer create-project slim/slim-skeleton /var/www/html
 }
 
 main
