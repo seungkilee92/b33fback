@@ -1,4 +1,4 @@
-create table IF NOT EXIST Users(
+create table IF NOT EXISTs Users(
     user_id int(11) NOT NULL AUTO_INCREMENT,
     first_name varchar (25) NOT NULL,
     username varchar(50) NOT NULL, 
@@ -7,7 +7,7 @@ create table IF NOT EXIST Users(
     email varchar(45) NOT NULL, 
     phone_number int(10) NOT NULL,
     account_created datetime NOT NULL,
-    last_logn timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+    last_logn timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1; 
 
@@ -27,10 +27,10 @@ values('justin', 'ledpipe', 'admin', 'onetwothreefour', 'justin@b33f.io', 469123
 
 
 
-create table IF NOT EXIST Channels(
+create table IF NOT EXISTS Channels(
     channel_id int(11) NOT NULL AUTO_INCREMENT, 
     channel_name varchar(50) NOT NULL, 
-    channel_created datetime NOT NULL
+    channel_created datetime NOT NULL,
     PRIMARY KEY (channel_id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,15 +43,15 @@ values("CS", NOW()),
 
 
 
-create table IF NOT EXIST Debates(
+create table IF NOT EXISTS Debates(
     debate_id int(11) NOT NULL AUTO_INCREMENT, 
     debate_name varchar(100) NOT NULL, 
     debate_channel int(11) NOT NULL, 
     debate_created datetime NOT NULL, 
-    debate_updated timestamp NOT NULL DEFAULT TIME_STAMP, 
+    debate_updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     proponent_id int NOT NULL, 
     opponent_id int,
-    debate_state varchar(10) NOT NULL
+    debate_state varchar(10) NOT NULL,
     PRIMARY KEY (debate_id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -71,12 +71,12 @@ insert into Debates (
     debate_state
 )
 values ('vim is better than emac', 1, NOW(), 1, 2, 'active'),
-values ('luke hansen is a not a memer but a dreamer', 1, NOW(), 2, NULL, 'pending');
+('luke hansen is a not a memer but a dreamer', 1, NOW(), 2, NULL, 'pending');
 
 
 
 
-create table Points(
+create table IF NOT EXISTS Points(
     point_id int(11) NOT NULL AUTO_INCREMENT,
     point_debate int(11) NOT NULL, 
     point_type varchar(8) NOT NULL, 
@@ -104,7 +104,7 @@ values(1, 'claim', 1, NOW(), 'emac is os'),
 
 
 
-create table Visted_channel(
+create table IF NOT EXISTS Visted_channel(
     visited_time datetime NOT NULL, 
     visited_user int(11) NOT NULL, 
     visted_channel int(11) NOT NULL, 
@@ -125,7 +125,7 @@ values(NOW(), 2, 1);
 
 
 
-create table Visited_debate(
+create table IF NOT EXISTS Visited_debate(
     visited_time datetime NOT NULL, 
     visited_user int(11) NOT NULL, 
     visited_debate int(11) NOT NULL, 
@@ -146,7 +146,7 @@ values(NOW(), 2, 1);
 
 
 
-create table Vote_channel(
+create table IF NOT EXISTS Vote_channel(
     vote_id int(11) NOT NULL AUTO_INCREMENT, 
     voter_id int(11) NOT NULL, 
     vote_type varchar(1), 
@@ -169,7 +169,7 @@ values (2, "u", 1);
 
 
 
-create table Vote_debate(
+create table IF NOT EXISTS Vote_debate(
     vote_id int(11) NOT NULL AUTO_INCREMENT, 
     voter_id int(11) NOT NULL, 
     vote_type varchar(1) NOT NULL, 
@@ -192,7 +192,7 @@ values(2, "u", 1);
 
 
 
-create table Vote_point(
+create table IF NOT EXISTS Vote_point(
     vote_id int(11) NOT NULL AUTO_INCREMENT, 
     voter_id int(11) NOT NULL, 
     vote_type varchar(1) NOT NULL, 
