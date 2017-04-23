@@ -8,6 +8,7 @@ main() {
     setup_mysql
     setup_php
     setup_misc
+    setup_slim
 }
 
 setup_apache() {
@@ -87,6 +88,20 @@ setup_php () {
 
 setup_misc () {
     apt-get -y install curl git
+}
+
+setup_slim () {
+    apt-get -y update
+    apt-get -y install curl php7.0-cli git
+    
+    #gives permission to apache
+    a2enmod rewrite
+    service apache2 restart
+    
+    # install rest of the requirements for slimapp
+    apt -y install zip unzip php7.0-zip
+    apt-get -y install php7.0-xml
+    composer create-project slim/slim-skeleton /var/www/html/backbeef
 }
 
 main
