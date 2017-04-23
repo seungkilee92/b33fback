@@ -75,7 +75,6 @@ values ('vim is better than emac', 1, NOW(), 1, 2, 'active'),
 
 
 
-
 create table IF NOT EXISTS Points(
     point_id int(11) NOT NULL AUTO_INCREMENT,
     point_debate int(11) NOT NULL, 
@@ -100,7 +99,6 @@ insert into Points(
 )
 values(1, 'claim', 1, NOW(), 'emac is os'),
 (1, 'response', 2, NOW(), 'vim is a meme');
-
 
 
 
@@ -167,8 +165,6 @@ insert into Vote_channel(
 values (2, "u", 1);
 
 
-
-
 create table IF NOT EXISTS Vote_debate(
     vote_id int(11) NOT NULL AUTO_INCREMENT, 
     voter_id int(11) NOT NULL, 
@@ -188,8 +184,6 @@ insert into Vote_debate(
     vote_debate
 )
 values(2, "u", 1);
-
-
 
 
 create table IF NOT EXISTS Vote_point(
